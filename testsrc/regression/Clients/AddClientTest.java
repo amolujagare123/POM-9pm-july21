@@ -1,5 +1,6 @@
 package regression.Clients;
 
+import Util.DoLogin;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,22 +14,8 @@ import java.io.IOException;
 
 import static utility.ConfigReader.*;
 
-public class AddClientTest {
-    WebDriver driver;
-    @BeforeClass
-    public void doLogin() throws IOException {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+public class AddClientTest extends DoLogin {
 
-        driver.manage().window().maximize();
-        driver.get(getUrl());
-
-        Login login = new Login(driver);
-
-        login.setTxtUsername(getUsername());
-        login.setTxtPassword(getPassword());
-        login.clickButtonLogin();
-    }
 
     @Test
     public void addClientTest()
@@ -38,24 +25,24 @@ public class AddClientTest {
 
         AddClient addClient = new AddClient(driver);
 
-        addClient.setLanguage("Swedish");
-        addClient.setCountry("Hungary");
-        addClient.setGender("Other");
-
-        /*addClient.setName("Abhijit");
+        addClient.setName("Abhijit1");
         addClient.setSurname("Banerjee");
+        addClient.setLanguage("Swedish");
         addClient.setAddress1("xyz");
         addClient.setAddress2("pqr");
         addClient.setCity("pune");
         addClient.setState("MH");
         addClient.setZip("89898");
+        addClient.setCountry("India");
         addClient.setPhone("98989");
         addClient.setFax("98989");
         addClient.setMobile("98989");
         addClient.setEmail("a@b.com");
         addClient.setWeb("www.abc.com");
+        addClient.setGender("Male");
+        addClient.setDateTextBox("01/05/1982"); // MM/dd/yyy
         addClient.setVat("9090232");
         addClient.setTax("9090232");
-        addClient.clickSave();*/
+        addClient.clickSave();
     }
 }

@@ -1,6 +1,7 @@
 package pages.Clients;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,6 +32,20 @@ public class AddClient {
 
     @FindBy(id="select2-client_language-container")
     WebElement containerLanguage;
+
+    @FindBy (xpath = "//input[@name='client_birthdate']")
+    WebElement dateTextBox;
+
+
+    public void setDateTextBox(String dateStr)
+    {
+       // dateTextBox.sendKeys(dateStr);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value','"+dateStr+"' )",dateTextBox);
+    }
+
+
 
     WebDriver driver;
     public void setLanguage(String language)
