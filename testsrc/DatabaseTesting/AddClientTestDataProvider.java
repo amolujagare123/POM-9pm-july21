@@ -10,9 +10,11 @@ import pages.Menu;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import static utility.Conversion.*;
 import static utility.DataProviderClass.getMyData;
 
 public class AddClientTestDataProvider extends DoLogin {
@@ -23,7 +25,7 @@ public class AddClientTestDataProvider extends DoLogin {
                               String language,String address1,String address2,String city ,
                               String state ,String zip,String country,String phone,String fax,
                               String email,String web,String mobile,String gender,
-                              String birthdate,String vat,String tax) throws ClassNotFoundException, SQLException {
+                              String birthdate,String vat,String tax) throws ClassNotFoundException, SQLException, ParseException {
 
         ArrayList<String> expected = new ArrayList<>();
         expected.add(name);
@@ -98,14 +100,29 @@ public class AddClientTestDataProvider extends DoLogin {
             actual.add(rs.getString("client_city"));
             actual.add(rs.getString("client_state"));
             actual.add(rs.getString("client_zip"));
-            actual.add(rs.getString("client_country"));
+
+
+            String countryShort =  rs.getString("client_country"); // IN
+
+            String fullFormCountry = convertCountry(countryShort);
+
+
+            actual.add(fullFormCountry);
+
+
+
             actual.add(rs.getString("client_phone"));
             actual.add(rs.getString("client_fax"));
             actual.add(rs.getString("client_email"));
             actual.add(rs.getString("client_web"));
             actual.add(rs.getString("client_mobile"));
-            actual.add(rs.getString("client_gender"));
-            actual.add(rs.getString("client_birthdate"));
+
+
+            actual.add(genderConversion(rs.getString("client_gender")));
+
+
+            actual.add(convertDate(rs.getString("client_birthdate")));
+
             actual.add(rs.getString("client_vat_id"));
             actual.add(rs.getString("client_tax_code"));
         }

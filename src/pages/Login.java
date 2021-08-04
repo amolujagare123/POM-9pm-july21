@@ -9,18 +9,28 @@ import org.openqa.selenium.support.PageFactory;
 public class Login {
 
     @FindBy (xpath = "//input[@id='email']")
-    WebElement txtUsername;
+    public WebElement txtUsername;
 
     //WebElement txtUsername =  driver.findElement(By.xpath("//input[@id='email']"));
 
     @FindBy (xpath = "//input[@id='password']")
-    WebElement txtPassword;
+    public WebElement txtPassword;
 
     @FindBy (xpath = "//button[@type='submit']")
-    WebElement btnLogin;
+    public WebElement btnLogin;
 
     @FindBy (xpath = "//a[normalize-space()='I forgot my password']")
-    WebElement lnkForgotPass;
+    public WebElement lnkForgotPass;
+
+    @FindBy (xpath = "//h1")
+    public  WebElement lblLogin;
+
+    @FindBy (xpath = "//label[@for='email']")
+    public  WebElement lblEmail;
+
+
+    @FindBy (xpath = "//label[@for='password']")
+    public WebElement lblPass;
 
     public void clickForgotPass()
     {
