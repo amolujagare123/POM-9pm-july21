@@ -1,0 +1,29 @@
+<suite name ="Invoice plane">
+
+    <listeners>
+        <listener class-name="Util.ForListners.MyListnersExtentReport"/>
+    </listeners>
+
+    <test name="regression">
+        <classes>
+            <class name="regression.LoginTest"/>
+            <class name="regression.ForgotPasswordTest"/>
+            <class name="regression.Clients.AddClientTestDataProvider"/>
+        </classes>
+
+    </test>
+
+    <test name="database">
+        <classes>
+            <class name="DatabaseTesting.AddClientTestDataProvider"/>
+        </classes>
+    </test>
+
+    <test name="UI Tests">
+        <classes>
+            <class name="uiTesting.LoginTest"/>
+        </classes>
+    </test>
+
+
+</suite>

@@ -32,6 +32,9 @@ public class Login {
     @FindBy (xpath = "//label[@for='password']")
     public WebElement lblPass;
 
+    @FindBy (xpath = "//button/i")
+    public WebElement iconButton;
+
     public void clickForgotPass()
     {
         lnkForgotPass.click();
